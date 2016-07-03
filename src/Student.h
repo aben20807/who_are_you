@@ -9,7 +9,7 @@ using namespace std;
 class Student{
 public:
     Student();
-    Student(const string);
+    Student(const string, const string);
     ~Student();
 
     void setStudentId(const string);

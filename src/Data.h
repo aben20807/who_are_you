@@ -2,13 +2,17 @@
 #define DATA_H
 
 #include<iostream>
+#include<cstdlib>
+#include<fstream>
 using namespace std;
 class Data{
 public:
     Data(int num);
     ~Data();
+
     int getNumOfData();
     void inputData();
+    void printData();
     void sortData();
 
 private:

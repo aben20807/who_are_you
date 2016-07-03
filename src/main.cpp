@@ -1,9 +1,9 @@
-// #include "Student.h"
-
-#include<iostream>
-#include<cstdlib>
-#include<fstream>
-using namespace std;
+#include "Student.h"
+#include "Data.h"
+// #include<iostream>
+// #include<cstdlib>
+// #include<fstream>
+// using namespace std;
 
 void checkFile(bool open_status);
 int countLine(istream& stream);
@@ -12,16 +12,19 @@ int main()
     ifstream fin;
     ofstream fout;
     do {
-        cout << "輸入指令：" << endl;
+        cout << "輸入指令：";
         string command;
         cin >> command;
-
+        /*進入模式*/
         if(command == "read"){
             fin.open("source.txt",ios::in);
             checkFile(fin);
             int line = countLine(fin);
             fin.close();
-            cout<<line<<endl;
+            // cout<<line<<endl;
+            Data *data = new Data(line);
+            data->inputData();
+            data->printData();
         }
         else if(command == "sort"){
 
