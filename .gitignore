@@ -1,3 +1,6 @@
 *.txt
 *.o
 *.exe
+*.stackdump
+main.exe.stackdump
+

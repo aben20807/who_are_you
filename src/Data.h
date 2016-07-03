@@ -16,7 +16,9 @@ public:
     void sortData();
 
 private:
-    int _num_of_data;
+    const int _num_of_data;
     string *_data;
+    string *_student_id;
+    string *_student_name;
 };
 #endif
