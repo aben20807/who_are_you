@@ -1,5 +1,6 @@
 #include "Data.h"
 
+
 Data::Data(int num):_num_of_data(num){
     _data = new string[getNumOfData()];
     _student_id = new string[getNumOfData()];
@@ -15,7 +16,7 @@ void Data::inputData(){
     ifstream din;
     din.open("source.txt",ios::in);//開啟檔案讀取
     if(!din){
-        cerr<<"Failed opening outFile.";
+        cerr<<"Failed opening source.txt.";
         exit(1);
     }
     for(int i = 0; i < _num_of_data; i++){
@@ -32,9 +33,31 @@ void Data::inputData(){
     }
     din.close();
 }
+void Data::outputData(){
+    ofstream dout;
+    dout.open("data.txt",ios::out);//開啟檔案寫入
+    if(!dout){
+        cerr<<"Failed opening data.txt.";
+        exit(1);
+    }
+    for(int i = 0; i < _num_of_data; i++){
+        dout << _student_id[i] <<" "<< _student_name[i] << endl;
+    }
+}
 void Data::printData(){
     for(int i = 0; i < _num_of_data; i++){
         // cout << _data[i] << endl;
         cout << _student_id[i] <<" "<< _student_name[i] << endl;
     }
 }
+void Data::sortData(){
+    /*TODO fix bug*/
+    // int index[_num_of_data];
+    // for(int i = 0; i < _num_of_data; i++){
+    //     index[i] = i;
+    // }
+    // sort(index, index + _num_of_data, compare);//boost::bind(&Data::compare,this,_1,_2));
+}
+// bool Data::compare(const int i, const int j){
+//     return (_student_id[i] > _student_id[j]);
+// }
