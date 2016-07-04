@@ -63,6 +63,14 @@ void Data::sortData(){
 // bool Data::compare(const int i, const int j){
 //     return (_student_id[i] > _student_id[j]);
 // }
-void Data::addData(const string id, const string name){
-
+void Data::addData(const string input_id, const string input_name){
+    for(int i = 0; i < _num_of_data; i++){
+        if(_student_id.at(i) == input_id){
+            _student_name.at(i) = input_name;
+            return;
+        }
+    }
+    _num_of_data++;
+    _student_id.push_back(input_id);
+    _student_name.push_back(input_name);
 }

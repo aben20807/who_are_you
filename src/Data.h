@@ -18,7 +18,7 @@ public:
     void inputData();
     void outputData();
     void printData();
-    void addData(const string id, const string name);
+    void addData(const string input_id, const string input_name);
     void sortData();
     bool compare(int i, int j);
 

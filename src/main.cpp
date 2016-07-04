@@ -45,10 +45,19 @@ int main()
                 continue;
             }
             string input_id, input_name;
-            cout << "請輸入學號：";
-            cin >> input_id;
-            cout << "請輸入姓名：";
-            cin >> input_name;
+            bool idError = true;
+            while(idError){
+                cout << "請輸入學號：";
+                cin >> input_id;
+                if(input_id.size() != 9){/*TODO using check code to check*/
+                    cout << "學號輸入錯誤，請重新輸入" << endl;
+                    continue;
+                }
+                cout << "請輸入姓名：";
+                cin >> input_name;
+                idError = false;
+            }
+            data->addData(input_id, input_name);
         }
         else if(command == "find"){
             if(!read_check){
