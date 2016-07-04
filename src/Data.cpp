@@ -2,12 +2,8 @@
 
 
 Data::Data(int num):_num_of_data(num){
-    _data = new string[getNumOfData()];
-    _student_id = new string[getNumOfData()];
-    _student_name = new string[getNumOfData()];
 }
 Data::~Data(){
-
 }
 int Data::getNumOfData(){
     return _num_of_data;
@@ -20,16 +16,21 @@ void Data::inputData(){
         exit(1);
     }
     for(int i = 0; i < _num_of_data; i++){
-        getline(din,_data[i]);//逐行輸入
-        for(int j = 0; j < _data[i].size(); j++){//把_data拆開
+        string tmps,tmpid,tmpname;
+        getline(din,tmps);
+        // cout<<tmps<<endl;
+        _data.push_back(tmps);
+        for(int j = 0; j < tmps.size(); j++)
+        {
             if(j < 9){
-                _student_id[i] += _data[i][j];
-            }//中間空格不需要
+                tmpid += tmps[j];
+            }
             else if(j > 9){
-                _student_name[i] += _data[i][j];
+                tmpname += tmps[j];
             }
         }
-        // cout<<i<<" "<<_data[i]<<endl;
+        _student_id.push_back(tmpid);
+        _student_name.push_back(tmpname);
     }
     din.close();
 }
@@ -41,13 +42,14 @@ void Data::outputData(){
         exit(1);
     }
     for(int i = 0; i < _num_of_data; i++){
-        dout << _student_id[i] <<" "<< _student_name[i] << endl;
+        // cout << _data.at(i) << endl;
+        dout << _student_id.at(i) <<" "<< _student_name.at(i) << endl;
     }
 }
 void Data::printData(){
     for(int i = 0; i < _num_of_data; i++){
-        // cout << _data[i] << endl;
-        cout << _student_id[i] <<" "<< _student_name[i] << endl;
+        // cout << _data.at(i) << endl;
+        cout << _student_id.at(i) <<" "<< _student_name.at(i) << endl;
     }
 }
 void Data::sortData(){
@@ -61,3 +63,6 @@ void Data::sortData(){
 // bool Data::compare(const int i, const int j){
 //     return (_student_id[i] > _student_id[j]);
 // }
+void Data::addData(const string id, const string name){
+
+}

@@ -27,6 +27,9 @@ private:
     vector<string> _data;
     vector<string> _student_id;
     vector<string> _student_name;
+    // string *_data;
+    // string *_student_id;
+    // string *_student_name;
 };
 
 #endif

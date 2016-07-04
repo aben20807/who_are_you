@@ -57,10 +57,6 @@ int main()
             }
         }
         else if(command == "delete"){
-            if(!read_check){
-                cout << "還未讀取資料，請先讀取" <<endl;
-                continue;
-            }
             delete data;
             read_check = false;
         }
