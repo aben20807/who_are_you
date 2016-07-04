@@ -3,12 +3,10 @@
 Student::Student(){
     setCheck(false);
     setStudentId("A00000000");
-    setName("無名");
 }
-Student::Student(string init_id, string init_name){
+Student::Student(string init_id){
     setCheck(false);
     setStudentId(init_id);
-    setName(init_name);
 }
 Student::~Student(){
 
@@ -16,9 +14,7 @@ Student::~Student(){
 void Student::setStudentId(string set_id){
     _studentid = set_id;
 }
-void Student::setName(string set_name){
-    _name = set_name;
-}
+
 string Student::getStudentId(){
     return _studentid;
 }
@@ -199,4 +195,11 @@ string Student::getNumber(){
     tmp+=_studentid[6];
     tmp+=_studentid[7];
     return tmp;
+}
+void Student::printAll(){
+    cout<<"就讀科系："<<getDepartment()<<endl;
+    cout<<"目前身份："<<getIdentity()<<endl;
+    cout<<"入學年度："<<getEntryYear()<<endl;
+    cout<<"入學方式："<<getEntryMethod()<<endl;
+    cout<<"班級座號："<<getNumber()<<endl;
 }

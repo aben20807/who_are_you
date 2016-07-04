@@ -28,15 +28,22 @@ int main()
             // cout<<line<<endl;
             data = new Data(line);
             data->inputData();
-            data->printData();
+            // data->printData();
         }
-        else if(command == "sort"){
-            /*TODO fix compare*/
+        // else if(command == "sort"){
+        //     /*TODO fix compare*/
+        //     if(!read_check){
+        //         cout << "還未讀取資料，請先讀取" <<endl;
+        //         continue;
+        //     }
+        //     data->sortData();
+        //     data->printData();
+        // }
+        else if(command == "print"){
             if(!read_check){
                 cout << "還未讀取資料，請先讀取" <<endl;
                 continue;
             }
-            data->sortData();
             data->printData();
         }
         else if(command == "add"){
@@ -47,7 +54,7 @@ int main()
             string input_id, input_name;
             bool idError = true;
             while(idError){
-                cout << "請輸入學號：";
+                cout << endl << "請輸入學號：";
                 cin >> input_id;
                 if(input_id.size() != 9){
                     cout << "學號輸入錯誤，請重新輸入" << endl;
@@ -66,15 +73,30 @@ int main()
             }
             data->outputData();
         }
-        else if(command == "find"){
+        else if(command == "search"){
             if(!read_check){
                 cout << "還未讀取資料，請先讀取" <<endl;
                 continue;
             }
-            cout << "輸入要找的學號：";
             string input_id;
-            cin >> input_id;
-            cout << data->findData(input_id) << endl;
+            bool idError = true;
+            while(idError){
+                cout << endl << "學號：";
+                cin >> input_id;
+                if(input_id.size() != 9){
+                    cout << "學號輸入錯誤，請重新輸入" << endl;
+                    continue;
+                }
+                idError = false;
+            }
+            if(data->findData(input_id) != "no found"){
+                cout << "姓名：" << data->findData(input_id) << endl;
+                Student *student = new Student(input_id);
+                student->printAll();
+            }
+            else{
+                cout << "no found" <<endl;
+            }
         }
         else if(command == "delete"){
             if(!read_check){
@@ -90,6 +112,7 @@ int main()
         else{
             cout << "沒有此指令" << endl;
         }
+        cout << endl;
     } while(true);
     return 0;
 }

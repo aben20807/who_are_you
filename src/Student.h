@@ -9,13 +9,11 @@ using namespace std;
 class Student{
 public:
     Student();
-    Student(const string, const string);
+    Student(const string);
     ~Student();
 
     void setStudentId(const string);
     string getStudentId();//學號
-    void setName(const string);
-    string getName();//姓名
 
     string getDepartment();//科系
     string getIdentity();//入學身份
@@ -24,6 +22,7 @@ public:
     string getNumber();//座號
     string getCheckCode();//檢查碼
 
+    void printAll();
     void setCheck(bool);
     bool getCheck();
 
