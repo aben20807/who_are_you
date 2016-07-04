@@ -19,7 +19,6 @@ void Data::inputData(){
         string tmps,tmpid,tmpname;
         getline(din,tmps);
         // cout<<tmps<<endl;
-        _data.push_back(tmps);
         for(int j = 0; j < tmps.size(); j++)
         {
             if(j < 9){
@@ -43,8 +42,9 @@ void Data::outputData(){
     }
     for(int i = 0; i < _num_of_data; i++){
         // cout << _data.at(i) << endl;
-        dout << _student_id.at(i) <<" "<< _student_name.at(i) << endl;
+        dout << _student_id.at(i) <<" "<< _student_name.at(i) << "\r\n";//windows裡的換行符號
     }
+    dout.close();
 }
 void Data::printData(){
     for(int i = 0; i < _num_of_data; i++){
@@ -64,13 +64,31 @@ void Data::sortData(){
 //     return (_student_id[i] > _student_id[j]);
 // }
 void Data::addData(const string input_id, const string input_name){
-    for(int i = 0; i < _num_of_data; i++){
+    for(int i = 0; i < _num_of_data; i++){//先搜尋是否有存在的學號
         if(_student_id.at(i) == input_id){
-            _student_name.at(i) = input_name;
-            return;
+            char rewrite;
+            while(rewrite != 'y' && rewrite != 'n'){//有相同學號時詢問是否覆寫
+                cout << "是否覆寫原本的資料(y/n)：";
+                cin >> rewrite;
+                if(rewrite == 'y'){
+                    _student_name.at(i) = input_name;
+                    return;
+                }
+                else if(rewrite == 'n'){
+                    return;
+                }
+            }
         }
     }
-    _num_of_data++;
+    _num_of_data++;//沒有相同時直接增加一筆資料
     _student_id.push_back(input_id);
     _student_name.push_back(input_name);
+}
+string Data::findData(const string input_id){
+    for(int i = 0; i < _num_of_data; i++){//先搜尋是否有存在的學號
+        if(_student_id.at(i) == input_id){
+            return _student_name.at(i);
+        }
+    }
+    return "no found";
 }

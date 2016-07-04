@@ -5,8 +5,8 @@
 // #include<fstream>
 // using namespace std;
 
-void checkFile(bool open_status);
-int countLine(istream& stream);
+void checkFile(bool open_status);//確認檔案開啟是否成功
+int countLine(istream& stream);//計算讀取檔案行數
 
 int main()
 {
@@ -49,7 +49,7 @@ int main()
             while(idError){
                 cout << "請輸入學號：";
                 cin >> input_id;
-                if(input_id.size() != 9){/*TODO using check code to check*/
+                if(input_id.size() != 9){
                     cout << "學號輸入錯誤，請重新輸入" << endl;
                     continue;
                 }
@@ -59,11 +59,22 @@ int main()
             }
             data->addData(input_id, input_name);
         }
+        else if(command == "write"){
+            if(!read_check){
+                cout << "還未讀取資料，請先讀取" <<endl;
+                continue;
+            }
+            data->outputData();
+        }
         else if(command == "find"){
             if(!read_check){
                 cout << "還未讀取資料，請先讀取" <<endl;
                 continue;
             }
+            cout << "輸入要找的學號：";
+            string input_id;
+            cin >> input_id;
+            cout << data->findData(input_id) << endl;
         }
         else if(command == "delete"){
             if(!read_check){
@@ -82,14 +93,14 @@ int main()
     } while(true);
     return 0;
 }
-void checkFile(bool open_status){
+void checkFile(bool open_status){//確認檔案開啟是否成功
     if(!open_status)
     {
         cerr<<"Failed opening source.txt.";
         exit(1);
     }
 }
-int countLine(istream& stream){
+int countLine(istream& stream){//計算讀取檔案行數
     int line = 0;
     string tmps;
     while(getline(stream,tmps)){

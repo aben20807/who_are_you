@@ -18,13 +18,13 @@ public:
     void inputData();
     void outputData();
     void printData();
-    void addData(const string input_id, const string input_name);
     void sortData();
     bool compare(int i, int j);
+    void addData(const string input_id, const string input_name);
+    string findData(const string input_id);
 
 private:
     int _num_of_data;
-    vector<string> _data;
     vector<string> _student_id;
     vector<string> _student_name;
 };
