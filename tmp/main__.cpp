@@ -7,12 +7,10 @@
 
 void checkFile(bool open_status);
 int countLine(istream& stream);
-
 int main()
 {
     ifstream fin;
     // ofstream fout;
-    bool read_check = false;
     do {
         cout << "輸入指令：";
         string command;
@@ -22,7 +20,6 @@ int main()
         if(command == "read"){
             fin.open("source.txt",ios::in);
             checkFile(fin);
-            read_check = true;
             int line = countLine(fin);
             fin.close();
             // cout<<line<<endl;
@@ -31,28 +28,14 @@ int main()
             data->printData();
         }
         else if(command == "sort"){
-            if(!read_check){
-                cout << "還未讀取資料，請先讀取" <<endl;
-                continue;
-            }
             data->sortData();
             data->printData();
         }
         else if(command == "add"){
-            if(!read_check){
-                cout << "還未讀取資料，請先讀取" <<endl;
-                continue;
-            }
+            
         }
         else if(command == "find"){
-            if(!read_check){
-                cout << "還未讀取資料，請先讀取" <<endl;
-                continue;
-            }
-        }
-        else if(command == "delete"){
-            delete data;
-            read_check = false;
+
         }
         else if(command == "exit"){
             break;
